@@ -1,0 +1,8 @@
+name = "Mastermind"
+description = "A Mastermind game written in PyScript"
+
+[files]  
+"create_code.py" = "./create_code.py"
+
+[[fetch]]
+files = ["create_code.py"]

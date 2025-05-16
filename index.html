@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html>
+    <head>
+        <!-- Recommended meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <!-- PyScript CSS -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+        <!-- CSS for examples -->
+        <link rel="stylesheet" href="./assets/css/examples.css" />
+
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+        <!-- Custom CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/mastermind.css" />
+
+        <!-- for splashscreen -->
+        <style>
+            #loading { outline: none; border: none; background: transparent }
+        </style>
+        <script type="module">
+            const loading = document.getElementById('loading');
+            addEventListener('py:ready', () => loading.close());
+            loading.showModal();
+        </script>
+
+        <title>MasterMind</title>
+        <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    </head>
+
+    <body>
+        <dialog id="loading">
+            <h1>Loading...</h1>
+        </dialog>
+
+        <nav class="navbar" style="background-color: #000000">
+            <div class="app-header">
+                <a href="/">
+                    <img src="./assets/logo.png" class="logo" />
+                </a>
+                <a class="title" href="" style="color: #f0ab3c">MasterMind</a>
+            </div>
+        </nav>
+
+        <section class="pyscript">
+            <h1>MasterMind</h1>
+
+            <script type="py" src="./main.py" config="./pyscript.toml"></script>
+
+            <h2 id="status"></h2>
+            <button id="btn-new-game" py-click="GAME.new_game">New game</button>
+            <button id="btn-toggle-terminal" py-click="GAME.toggle_terminal">Hide/show terminal</button>
+
+            <div id="terminal" hidden="hidden">
+                <script id="console" type="py" terminal></script>
+            </div>
+
+            <div>
+                <input id="guess-input" type="text" placeholder="Enter 4 digits (e.g., 1234)" maxlength="4" />
+                <button id="submit_guess_button" py-click="GAME.submit_guess">Submit Guess!</button>
+                <div id="output_div" style="margin-top: 10px;margin-bottom: 10px;"></div>
+            </div>
+
+            <div id="output_div" style="margin-top: 10px;margin-bottom: 10px;"></div>
+            
+        </section>
+    </body>
+
+</html>
